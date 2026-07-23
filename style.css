@@ -35,3 +35,56 @@
     border-radius: 10px;
     background-color: whitesmoke;
 }
+/* 1. Button Hover Effect */
+.login button:hover{
+   background-color: #7b2cbf;
+}
+
+/* 2. Input Focus Effect */
+.login input:focus{
+   outline: none;
+   background-color: #fff;
+   border: 2px solid blueviolet;
+}
+
+/* 3. Input Full Width */
+.login input{
+   width: 100%;
+   box-sizing: border-box;
+   margin-bottom: 10px;
+}
+
+/* 4. Error Message Styling */
+#password-error{
+   margin: 8px 0;
+   font-size: 14px;
+   font-weight: 600;
+   display: none;
+   padding: 8px 10px;
+   border-radius: 5px;
+   background-color: #ffe6e6;
+   color: red;
+}
+
+/* 5. Success Message Styling */
+#password-error.success{
+   background-color: #e6ffe6;
+   color: green;
+}
+
+/* 6. Password Requirements Styling */
+.password-requirements{
+   font-size: 12px;
+   color: #666;
+   font-style: italic;
+   margin: 8px 0;
+   padding: 8px 10px;
+   background-color: rgba(255, 255, 255, 0.5);
+   border-radius: 5px;
+   border-left: 3px solid blueviolet;
+}
+
+/* 7. Button Transition Effect */
+.login button{
+   transition: background-color 0.3s ease;
+}
