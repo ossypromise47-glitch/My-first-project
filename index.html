@@ -17,11 +17,15 @@
        <input type="text" name="Email" placeholder="example@gmail.com">
        
        <h3>Enter your password</h3>
-       <input type="password" name="password" placeholder="xxxxxxxx">
+       <input type="password" id="password" placeholder="xxxxxxxx">
        
        <br><br>
+        <p id="password-error" class="error-message"></p>
+<p class="password-requirements">
+    Requirements: 8-12 characters, at least 1 number, at least 1 special character
+</p>
        
-       <button>Login</button>
+       <button onclick="validatePassword()">Login</button>
     </div>
     <script>
     function validatePassword() {
