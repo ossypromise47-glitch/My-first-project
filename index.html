@@ -49,6 +49,38 @@
         alert('Login successful!');
         return true;
     }
+        function validatePassword() {
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('password-error');
+    
+    const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+    
+    if (password === '') {
+        errorMessage.textContent = '❌ Password is required';
+        errorMessage.style.display = 'block';
+        return false;
+    }
+    
+    if (!passwordPattern.test(password)) {
+        errorMessage.textContent = '❌ Password must be 8-12 characters with at least 1 number and 1 special character';
+        errorMessage.style.display = 'block';
+        return false;
+    }
+    
+    errorMessage.textContent = '✅ Password is valid!';
+    errorMessage.style.color = 'green';
+    errorMessage.style.display = 'block';
+    
+    alert('Login successful!');
+    
+    // CLEAR THE FORM
+    document.getElementById('password').value = '';
+    document.querySelector('input[name="Email"]').value = '';
+    errorMessage.textContent = '';
+    errorMessage.style.display = 'none';
+    
+    return true;
+}
 
     document.getElementById('password').addEventListener('input', function() {
         const password = this.value;
