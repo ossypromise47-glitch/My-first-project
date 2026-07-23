@@ -23,5 +23,47 @@
        
        <button>Login</button>
     </div>
+    <script>
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('password-error');
+        
+        const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+        
+        if (password === '') {
+            errorMessage.textContent = '❌ Password is required';
+            return false;
+        }
+        
+        if (!passwordPattern.test(password)) {
+            errorMessage.textContent = '❌ Password must be 8-12 characters with at least 1 number and 1 special character';
+            return false;
+        }
+        
+        errorMessage.textContent = '✅ Password is valid!';
+        errorMessage.style.color = 'green';
+        alert('Login successful!');
+        return true;
+    }
+
+    document.getElementById('password').addEventListener('input', function() {
+        const password = this.value;
+        const errorMessage = document.getElementById('password-error');
+        const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+        
+        if (password === '') {
+            errorMessage.textContent = '';
+            return;
+        }
+        
+        if (!passwordPattern.test(password)) {
+            errorMessage.textContent = '❌ Invalid password';
+            errorMessage.style.color = 'red';
+        } else {
+            errorMessage.textContent = '✅ Password is valid!';
+            errorMessage.style.color = 'green';
+        }
+    });
+</script>
 </body>
 </html>
