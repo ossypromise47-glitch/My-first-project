@@ -1,67 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create an account</title>
+  <style>
+    * { box-sizing: border-box; padding: 0; margin: 0; }
+    html, body { height: 100%; }
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      width: 340px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 14px;
+      text-align: center;
+      color: #222;
+    }
+
+    .form-group { margin-bottom: 12px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="tel"] {
+      width: 100%;
+      height: 38px;
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+    }
+
+    .gender-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .gender-group label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+
+    .helper { font-size: 12px; color: #666; margin-left: 6px; }
+
+    .error {
+      color: #b00020;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+      height: 44px;
+      background-color: #1e5eff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+  </style>
 </head>
-    <script>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        body{
-        background-color: rgb(240, 240, 240);
-            padding: 0;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-    .form-container{
-        width: 300px;
-        height: 100%;
-        background-color: burlywood;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-        box-shadow: 0px 0px 10px gray;
-    }
-        input{
-        width: 100%;
-        border: none;
-        height: 30px;
-        margin-bottom: 10px;
-    }
-    button{
-        width: 100%;
-        height: 40px;
-        background-color: blue;
-        color: white;
-        border: none;
-    }
-    </script>
 <body>
-    <b>Create an account</b>
-     <form>
-         <p>Enter your fullname</p>
-           <input type="text" placeholder="John Doe">
-         <p>Occupation(Optional)</p>
-            <input type="text" placeholder="Software Engineer">
-         <p>Enter your date of birth</p>
-            <input type="date" name="dob">
-            <p>Gender</p>
-            <input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female
-            <input type="radio" name="gender" value="other"> Other
-            <p>Phone number</p>
-            <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="1234567890">
-            <p>Enter your email</p>
-            <input type="email" placeholder="example@gmail.com">
-            <p>Enter your password</p>
-            <input type="password" placeholder="xxxxxxxx">
-            <p>Confirm your password</p>
-            <input type="password" placeholder="xxxxxxxx">
-         <br><br>
-            <button type="submit">Submit</button>
-        </form>
+  <div class="form-container">
+    <h1>Create an account</h1>
+
+    <form id="signup" method="post" action="">
+      <div class="form-group">
+        <label for="fullname">Full name</label>
+        <input id="fullname" name="fullname" type="text" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="occupation">Occupation <span class="helper">(optional)</span></label>
+        <input id="occupation" name="occupation" type="text" placeholder="Software Engineer">
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of birth</label>
+        <input id="dob" name="dob" type="date" required>
+      </div>
+
+      <fieldset class="form-group" aria-labelledby="gender-legend">
+        <legend id="gender-legend">Gender</legend>
+        <div class="gender-group" role="radiogroup" aria-labelledby="gender-legend">
+          <label><input id="gender-male" type="radio" name="gender" value="male"> Male</label>
+          <label><input id="gender-female" type="radio" name="gender" value="female"> Female</label>
+          <label><input id="gender-other" type="radio" name="gender" value="other"> Other</label>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <label for="phone">Phone number <span class="helper">(optional)</span></label>
+        <input id="phone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="1234567890" inputmode="numeric" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="At least 8 characters" minlength="8" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm">Confirm password</label>
+        <input id="confirm" name="confirm" type="password" placeholder="Re-enter password" minlength="8" required>
+        <div id="pw-error" class="error" aria-live="polite" style="display:none;"></div>
+      </div>
+
+      <button id="submitBtn" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('signup');
+      const pw = document.getElementById('password');
+      const confirm = document.getElementById('confirm');
+      const pwError = document.getElementById('pw-error');
+      const submitBtn = document.getElementById('submitBtn');
+
+      function validatePasswords() {
+        if (!pw.value && !confirm.value) {
+          pwError.style.display = 'none';
+          pwError.textContent = '';
+          return true;
+        }
+
+        if (pw.value !== confirm.value) {
+          pwError.textContent = 'Passwords do not match.';
+          pwError.style.display = 'block';
+          return false;
+        }
+
+        if (pw.value.length < 8) {
+          pwError.textContent = 'Password must be at least 8 characters.';
+          pwError.style.display = 'block';
+          return false;
+        }
+
+        pwError.textContent = '';
+        pwError.style.display = 'none';
+        return true;
+      }
+
+      pw.addEventListener('input', validatePasswords);
+      confirm.addEventListener('input', validatePasswords);
+
+      form.addEventListener('submit', function (e) {
+        // Let browser show native validation UI for required/pattern/etc.
+        if (!form.checkValidity()) {
+          // If fields are invalid, let the browser handle reporting.
+          return;
+        }
+
+        // Run password checks (matching & length)
+        if (!validatePasswords()) {
+          e.preventDefault();
+          confirm.focus();
+          return;
+        }
+
+        // If you want to handle submission with JS (AJAX), prevent default here and send data.
+        // For demonstration we allow the normal submit to proceed.
+      });
+
+      // Optional: disable the submit button until form is valid (UX nicety)
+      function updateSubmitState() {
+        submitBtn.disabled = !form.checkValidity() || !validatePasswords();
+      }
+
+      form.addEventListener('input', updateSubmitState);
+      updateSubmitState();
+    })();
+  </script>
 </body>
 </html>
